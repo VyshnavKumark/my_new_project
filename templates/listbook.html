@@ -1,0 +1,64 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Book name</th>
+        <th scope="col">Book price</th>
+        <th scope="col">Action</th>
+    </tr>
+    </thead>
+
+    <tbody>
+     {% for book in books %}
+        <tr>
+            <th scope="row">{{forloop.counter}}</th>
+        <td> {{book.title}}</td>
+        <td> {{book.price}}</td>
+        <td><a href="{% url 'details' book.id%}" class="btn btn-primary">Details</a>
+            <a href="{% url 'update' book.id%}" class="btn btn-success">update</a>
+            <a href="{% url 'delete' book.id%}" class="btn btn-danger">Delete</a>
+        </td>
+    </tr>
+     {% endfor %}
+    </tbody>
+
+</table>
+
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+      {% if page.has_previous %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{ page.previous_page_number }}" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+      {% endif %}
+
+
+    <li class="page-item activate"><a class="page-link" href="#">1</a>
+    </li>
+
+
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+
+
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+
+  </ul>
+</nav>
+
+{% endblock %}
+
+

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h1> specific book details</h1>
+
+
+  <img src="{{ books.image.url }}">
+  {{books.title}}<br>
+  {{books.price}}
+
+{% endblock %}
